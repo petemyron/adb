@@ -1,5 +1,5 @@
 # build for both arm/x86 with:
-#   docker buildx build --platform linux/amd64,linux/arm/v7 -t docker.tmo.io/adb:alpine-3.11 -f adb-alpine.dockerfile --push .
+#   docker buildx build --platform linux/amd64,linux/arm/v7 -t petemyron/adb --push .
 
 FROM alpine:3.11
 
