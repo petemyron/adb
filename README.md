@@ -1,15 +1,13 @@
-# build a modern adb on ubuntu
+# build a modern adb on alpine
 
-Ubuntu/Debian packages are always so far behind. 
+Ubuntu/Debian packages are always so far behind, so use Alpine.
 
 clone, build with something like:
 
 ```
-docker build -t adb:29.0.6 --build-arg ANDROID_TOOLS_VERSION=29.0.6 .
-``` 
-
-or, for ARM (like a Raspberry Pi):
-
+docker buildx build --platform linux/amd64,linux/arm/v7 -t adb . [--load|--push]
 ```
-docker buildx build --platform linux/arm/v7 -t adb:29.0.6_arm --build-arg ANDROID_TOOLS_VERSION=29.0.6 .
-```
+
+## enable an arm buildx builder
+* `docker buildx create --name test --platform linux/armv7`
+* `docker buildx inspect test --bootstrap`
